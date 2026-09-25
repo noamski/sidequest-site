@@ -14,7 +14,7 @@ Both email forms post to Formspree:
 
 `https://formspree.io/f/REPLACE_ME`
 
-`REPLACE_ME` is a placeholder. This repo does not contain a real Formspree id. Swap it in before the list can accept mail. Loops is not used.
+`REPLACE_ME` is a placeholder. This repo does not contain a real Formspree id. Swap it in before the list can accept mail. Loops is not used. Until that swap, submitting the form says the waitlist isn’t connected yet.
 
 When Formspree accepts a post, the page shows: “You’re on the list. We’ll write when there’s something real to try.”
 
