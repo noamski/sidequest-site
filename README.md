@@ -10,11 +10,11 @@ The page sends `noindex, nofollow`. Remove that robots meta when it is time to p
 
 ## Waitlist form
 
-Both email forms post to Formspree:
+Both email forms post to the Formspree form SideQuest Waitlist (`xkjgzyew`):
 
-`https://formspree.io/f/REPLACE_ME`
+`https://formspree.io/f/xkjgzyew`
 
-`REPLACE_ME` is a placeholder. This repo does not contain a real Formspree id. Swap it in before the list can accept mail. Loops is not used. Until that swap, submitting the form says the waitlist isn’t connected yet.
+Loops is not used. The site stays unpublished.
 
 When Formspree accepts a post, the page shows: “You’re on the list. We’ll write when there’s something real to try.”
 

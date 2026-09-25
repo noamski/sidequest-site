@@ -88,12 +88,12 @@
         <h1 id="hero-title">I gave myself one small mission today.</h1>
         <p class="hero-sub">Three things. Done. Field notes that fill with what you actually did.</p>
 
-        <form class="waitlist-form" action="https://formspree.io/f/REPLACE_ME" method="POST" accept-charset="UTF-8">
+        <form class="waitlist-form" action="https://formspree.io/f/xkjgzyew" method="POST" accept-charset="UTF-8">
           <div class="hp" aria-hidden="true">
             <label for="company-hero">Company</label>
             <input id="company-hero" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
-          <input type="hidden" name="_subject" value="SideQuest waitlist">
+          <input type="hidden" name="_subject" value="SideQuest Waitlist">
           <input type="hidden" name="utm_source" value="">
           <input type="hidden" name="utm_medium" value="">
           <input type="hidden" name="utm_campaign" value="">
@@ -244,12 +244,12 @@
       <section class="block close" id="waitlist" aria-labelledby="close-title">
         <h2 id="close-title">We’re building this.</h2>
         <p class="lead">Join the waitlist for iOS. Coming soon — not available now.</p>
-        <form class="waitlist-form" action="https://formspree.io/f/REPLACE_ME" method="POST" accept-charset="UTF-8">
+        <form class="waitlist-form" action="https://formspree.io/f/xkjgzyew" method="POST" accept-charset="UTF-8">
           <div class="hp" aria-hidden="true">
             <label for="company-close">Company</label>
             <input id="company-close" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
-          <input type="hidden" name="_subject" value="SideQuest waitlist">
+          <input type="hidden" name="_subject" value="SideQuest Waitlist">
           <input type="hidden" name="utm_source" value="">
           <input type="hidden" name="utm_medium" value="">
           <input type="hidden" name="utm_campaign" value="">
@@ -332,10 +332,7 @@
           button.disabled = true;
           form.setAttribute("aria-busy", "true");
           function fail() {
-            var unwired = form.action.indexOf("REPLACE_ME") !== -1;
-            note.textContent = unwired
-              ? "The waitlist isn’t connected yet."
-              : "Couldn’t add you just now.";
+            note.textContent = "Couldn’t add you just now.";
             note.classList.add("is-visible", "is-error");
           }
           fetch(form.action, {
