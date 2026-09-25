@@ -32,7 +32,7 @@ If the page URL includes them, these query params are copied into hidden fields 
 
 ## Meta Pixel
 
-Commented stub only, with placeholder `META_PIXEL_ID`. The pixel script is not loaded. PageView is for a later load, after a real id exists. Lead is for one successful Formspree submit, not for page load.
+Commented stub only, with placeholder `META_PIXEL_ID`. The pixel script is not loaded. PageView and Lead each run once, only after a successful Formspree submit, not on page load.
 
 ## Local preview
 

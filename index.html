@@ -22,12 +22,9 @@
   <link rel="stylesheet" href="styles.css">
   <!--
     Meta Pixel stub. Placeholder id only: META_PIXEL_ID.
-    Do not load https://connect.facebook.net until META_PIXEL_ID is replaced with a real pixel id.
-    PageView: once on load, after that real id is set.
-    Lead: once, only after Formspree accepts a waitlist post. Not on page load.
-    Left inert on purpose:
-      fbq('init', 'META_PIXEL_ID');
-      fbq('track', 'PageView');
+    Do not load the pixel script until META_PIXEL_ID is a real id.
+    PageView and Lead: once each, only after Formspree accepts a waitlist post.
+    Not on page load. The snippet in the success handler stays commented.
   -->
   <script type="application/ld+json">
   {
@@ -350,10 +347,12 @@
               form.reset();
               note.textContent = success;
               note.classList.add("is-visible", "is-success");
-              // Meta Pixel Lead: once, only after Formspree success.
-              // Inert while the id is META_PIXEL_ID. Do not call this on page load.
-              // if (window.fbq && !window.__sqLeadTracked) {
-              //   window.__sqLeadTracked = true;
+              // Meta Pixel: PageView and Lead, once, only after Formspree success.
+              // Inert while the id is META_PIXEL_ID. Do not run this on page load.
+              // if (window.fbq && !window.__sqPixelTracked) {
+              //   window.__sqPixelTracked = true;
+              //   window.fbq('init', 'META_PIXEL_ID');
+              //   window.fbq('track', 'PageView');
               //   window.fbq('track', 'Lead');
               // }
             } else {
