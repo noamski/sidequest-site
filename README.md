@@ -18,10 +18,26 @@ Both email forms post to Formspree:
 
 When Formspree accepts a post, the page shows: “You’re on the list. We’ll write when there’s something real to try.”
 
+## UTM fields
+
+If the page URL includes them, these query params are copied into hidden fields on both forms: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`. Empty params stay empty. Expected paid values, for when a campaign exists:
+
+| Param | Expected value |
+| --- | --- |
+| `utm_source` | `meta` |
+| `utm_medium` | `paid_social` |
+| `utm_campaign` | `sq_waitlist_tlv_v1` |
+| `utm_content` | `script_a` or `script_b` |
+| `utm_term` | `tlv_broad_2544` |
+
+## Meta Pixel
+
+Commented stub only, with placeholder `META_PIXEL_ID`. The pixel script is not loaded. PageView is for a later load, after a real id exists. Lead is for one successful Formspree submit, not for page load.
+
 ## Local preview
 
 Open `index.html` in a browser. No build step.
 
 ## Copy
 
-Visible copy follows Founder-approved draft v1 (2026-09-25). The wordmark is SideQuest, one word, and it is not the page H1.
+Visible copy follows Founder-approved draft v1 (2026-09-25). Outing memory is called field notes. The wordmark is SideQuest, one word, and it is not the page H1.

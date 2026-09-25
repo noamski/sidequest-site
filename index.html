@@ -20,6 +20,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,560;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!--
+    Meta Pixel stub. Placeholder id only: META_PIXEL_ID.
+    Do not load https://connect.facebook.net until META_PIXEL_ID is replaced with a real pixel id.
+    PageView: once on load, after that real id is set.
+    Lead: once, only after Formspree accepts a waitlist post. Not on page load.
+    Left inert on purpose:
+      fbq('init', 'META_PIXEL_ID');
+      fbq('track', 'PageView');
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -80,7 +89,7 @@
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
         <h1 id="hero-title">I gave myself one small mission today.</h1>
-        <p class="hero-sub">Three things. Done. A field journal that fills with what you actually did.</p>
+        <p class="hero-sub">Three things. Done. Field notes that fill with what you actually did.</p>
 
         <form class="waitlist-form" action="https://formspree.io/f/REPLACE_ME" method="POST" accept-charset="UTF-8">
           <div class="hp" aria-hidden="true">
@@ -88,6 +97,11 @@
             <input id="company-hero" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
           <input type="hidden" name="_subject" value="SideQuest waitlist">
+          <input type="hidden" name="utm_source" value="">
+          <input type="hidden" name="utm_medium" value="">
+          <input type="hidden" name="utm_campaign" value="">
+          <input type="hidden" name="utm_content" value="">
+          <input type="hidden" name="utm_term" value="">
           <label class="field-label" for="email-hero">Email</label>
           <div class="form-row">
             <input id="email-hero" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" spellcheck="false">
@@ -178,9 +192,9 @@
       </section>
 
       <section class="block" aria-labelledby="journal-title">
-        <p class="label">Field journal</p>
+        <p class="label">Field notes</p>
         <h2 id="journal-title">What your month looks like when you actually go.</h2>
-        <p>Missions stack into a field journal — outing log, not a gratitude list. One photo, one line, repeated. After a few weeks the camera roll looks different because you did things, not because of filters.</p>
+        <p>Missions stack into field notes — outing log, not a gratitude list. One photo, one line, repeated. After a few weeks the camera roll looks different because you did things, not because of filters.</p>
         <p class="note-line">Journal history stays free.</p>
         <div class="stills-wrap">
           <ol class="stills" aria-label="Five stills, five honest lines, no streak counter">
@@ -239,6 +253,11 @@
             <input id="company-close" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
           <input type="hidden" name="_subject" value="SideQuest waitlist">
+          <input type="hidden" name="utm_source" value="">
+          <input type="hidden" name="utm_medium" value="">
+          <input type="hidden" name="utm_campaign" value="">
+          <input type="hidden" name="utm_content" value="">
+          <input type="hidden" name="utm_term" value="">
           <label class="field-label" for="email-close">Email</label>
           <div class="form-row">
             <input id="email-close" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" spellcheck="false">
@@ -293,6 +312,18 @@
   <script>
     (function () {
       var success = document.getElementById("success-copy").textContent;
+      var utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+      var params = new URLSearchParams(window.location.search);
+      utmKeys.forEach(function (key) {
+        var value = params.get(key);
+        if (value == null) return;
+        value = value.replace(/[\r\n]/g, " ").trim().slice(0, 120);
+        if (!value) return;
+        document.querySelectorAll('input[name="' + key + '"]').forEach(function (input) {
+          input.defaultValue = value;
+          input.value = value;
+        });
+      });
       var forms = document.querySelectorAll(".waitlist-form");
       forms.forEach(function (form) {
         form.addEventListener("submit", function (event) {
@@ -319,6 +350,12 @@
               form.reset();
               note.textContent = success;
               note.classList.add("is-visible", "is-success");
+              // Meta Pixel Lead: once, only after Formspree success.
+              // Inert while the id is META_PIXEL_ID. Do not call this on page load.
+              // if (window.fbq && !window.__sqLeadTracked) {
+              //   window.__sqLeadTracked = true;
+              //   window.fbq('track', 'Lead');
+              // }
             } else {
               fail();
             }
