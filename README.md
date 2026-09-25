@@ -32,7 +32,7 @@ If the page URL includes them, these query params are copied into hidden fields 
 
 ## Meta Pixel
 
-Commented stub only, with placeholder `META_PIXEL_ID`. The pixel script is not loaded. PageView and Lead each run once, only after a successful Formspree submit, not on page load.
+Pixel SideQuest Waitlist (`1033489919739955`) loads with the official base snippet and sends PageView on page load. A standard Lead fires once when Formspree accepts a waitlist signup. A page flag stops a second Lead if the form is submitted again.
 
 ## Local preview
 

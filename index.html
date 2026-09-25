@@ -18,12 +18,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,560;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!--
-    Meta Pixel stub. Placeholder id only: META_PIXEL_ID.
-    Do not load the pixel script until META_PIXEL_ID is a real id.
-    PageView and Lead: once each, only after Formspree accepts a waitlist post.
-    Not on page load. The snippet in the success handler stays commented.
-  -->
+  <!-- Meta Pixel: SideQuest Waitlist. Business context 783638075384071. -->
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1033489919739955');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1033489919739955&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -342,14 +354,10 @@
               form.reset();
               note.textContent = success;
               note.classList.add("is-visible", "is-success");
-              // Meta Pixel: PageView and Lead, once, only after Formspree success.
-              // Inert while the id is META_PIXEL_ID. Do not run this on page load.
-              // if (window.fbq && !window.__sqPixelTracked) {
-              //   window.__sqPixelTracked = true;
-              //   window.fbq('init', 'META_PIXEL_ID');
-              //   window.fbq('track', 'PageView');
-              //   window.fbq('track', 'Lead');
-              // }
+              if (window.fbq && !window.__sqLeadTracked) {
+                window.__sqLeadTracked = true;
+                window.fbq("track", "Lead");
+              }
             } else {
               fail();
             }
